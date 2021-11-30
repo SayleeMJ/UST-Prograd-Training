@@ -1,6 +1,6 @@
 import java.util.LinkedHashSet;
 
-public class LinkedListSet {
+public class LinkedSet {
     public static void main(String[] args)
     {
         LinkedHashSet<String> linkedset = new LinkedHashSet<>();
