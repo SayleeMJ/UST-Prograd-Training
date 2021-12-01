@@ -26,11 +26,11 @@ public class TreeMapExample {
         }
 
         System.out.println("\nDescendingMap: "+map.descendingMap());
-        //Returns key-value pairs whose keys are less than or equal to the specified key.
+        
         System.out.println("\nHeadMap: "+map.headMap(102,true));
-        //Returns key-value pairs whose keys are greater than or equal to the specified key.
+      
         System.out.println("\nTailMap: "+map.tailMap(102,true));
-        //Returns key-value pairs exists in between the specified key.
+        
         System.out.println("\nSubMap: "+map.subMap(100, false, 102, true));
 
         System.out.println("\nIs value present: " + map.containsValue(101));
