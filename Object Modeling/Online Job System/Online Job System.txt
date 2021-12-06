@@ -1,0 +1,49 @@
+Admin:
+	Properties -
+		admin-id
+		username
+		password
+
+	Method -
+		manage database
+		upload new jobs
+		approve job
+		approve company
+
+Candidate:
+	Properties -
+	personal details-
+		name, 
+		phone_no, 
+		address, 
+		birthdate
+		email id
+		hobbies
+
+	educational details-
+		ssc scores
+		hsc scores
+		diploma scores
+		graduation scores
+		pg scores
+
+	Methods-
+		create account
+		login
+		fill details
+		upload documents
+		upload cv
+		apply
+
+Employer:
+	Properties-
+		employer name
+		company name
+		company id
+		email id
+		contact number
+	Methods - 
+		login
+		interview candidate
+		shortlist candidate
+		upload JD
