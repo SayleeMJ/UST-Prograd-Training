@@ -1,0 +1,12 @@
+Customer :
+	Properties -
+		name
+		address
+		Phone-number
+		email-id
+
+	Method- :
+		Register
+		login
+		update details
+		place order		cancel order		Admin :	Properties - 		username		password  	Methods - 		Manage database 
