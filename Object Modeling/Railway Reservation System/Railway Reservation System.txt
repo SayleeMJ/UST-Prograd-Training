@@ -1,0 +1,37 @@
+Customer :
+	Properties -
+		name
+		age
+		address
+		gender
+		phone-number
+		email-id
+
+	Methods :
+		Search-train
+		book-ticket
+		cancel-ticket
+		fill-form
+		pay-charges
+		modify- form
+		sumbit-form
+
+CLERK :
+	Properties-
+		clerk-id
+		clerk-name
+		designation
+		phone-number	
+		email-id
+
+	Methods 
+		check_form
+		cancel_form
+
+Railway System :
+	Properties- 
+		username
+		Password
+
+	methods-
+		response
