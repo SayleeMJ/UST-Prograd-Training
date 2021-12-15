@@ -1,0 +1,14 @@
+Dec 15, 2021 1:30:25 PM CurrencyConvertor main
+INFO: Program Started
+Dec 15, 2021 1:30:34 PM CurrencyConvertor main
+INFO: User entered amount 200.0
+Dec 15, 2021 1:30:36 PM CurrencyConvertor main
+INFO: User selected INR 
+Dec 15, 2021 1:30:40 PM CurrencyConvertor main
+INFO: User entered amount 300.0
+Dec 15, 2021 1:30:46 PM CurrencyConvertor main
+INFO: User selected Euro
+Dec 15, 2021 1:30:57 PM CurrencyConvertor main
+INFO: User entered amount 200.0
+Dec 15, 2021 1:30:59 PM CurrencyConvertor main
+INFO: Program Ended
