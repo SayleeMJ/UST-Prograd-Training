@@ -124,8 +124,10 @@ public class CurrencyConvertor {
                         System.out.println("In Pound: " + format.format(pound) + " pound");
                     }
                     default -> {
-                        System.out.println("Invalid Input!!");
                         logger.info("Program Ended");
+                        if (code>5){
+                            throw new InvalidCurrency("Invalid Currency");
+                        }
                     }
                 }
             } while (code!=5);
