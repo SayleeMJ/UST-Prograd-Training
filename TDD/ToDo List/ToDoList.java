@@ -7,8 +7,8 @@ public class ToDoList {
       PriorityQueue<String> todoList = new PriorityQueue<String>();
       ArrayList<String> removedList = new ArrayList<>();
 
-      public void addItemsToList(String item, boolean completedOrNotCompleted) {
-            if (completedOrNotCompleted) {
+      public void addItemsToList(String item, boolean status) {
+            if (status) {
                   todoListCompleted.add(item);
                   todoList.addAll(todoListCompleted);
             } else {
@@ -45,15 +45,15 @@ public class ToDoList {
             return task;
       }
 
-      public boolean taskCompletedOrNotCompleted(String completedOrNotCompletedList) {
+      public boolean taskCompletedOrNotCompleted(String status) {
             boolean task = false;
             for (String list : todoListCompleted) {
-                  if (list == completedOrNotCompletedList) {
+                  if (list == status) {
                         task = true;
                   }
             }
             for (String list : todoListNotCompleted) {
-                  if (list == completedOrNotCompletedList) {
+                  if (list == status) {
                         task = false;
                   }
             }
