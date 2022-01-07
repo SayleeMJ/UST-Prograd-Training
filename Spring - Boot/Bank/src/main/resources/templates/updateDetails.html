@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Details</title>
+    <link rel="stylesheet" href="Home.css"/>
+    <script src="https://kit.fontawesome.com/e3fa0230bd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <h2><a href="Home">DYNAMIC BANK</a></h2>
+    <nav>
+
+        <li><a href="Home">Home</a></li>
+        <li><a href="afterlogin">View Details</a></li>
+        <li><a href="updateDetails">Update Details</a></li>
+        <li><a href="fundTransfer">Fund Transfer</a></li>
+        <li><a href="Home">Logout</a></li>
+    </nav>
+</header>
+<section class="banner-area">
+    <div class="banner-img"></div>
+    <div class="centerr">
+        <h1>Update Details</h1>
+        <form method="post" action="/updateDetails">
+            <div class="txt_field1">
+                <input type="text" name="customerName" th:value="${customer.customerName}" required>
+                <span></span>
+                <label>Name</label>
+            </div>
+            <div class="txt_field1">
+                <input type="text" name="Contact" required>
+                <span></span>
+                <label>Contact</label>
+            </div>
+            <div class="txt_field1">
+                <input type="text" name="Email" required>
+                <span></span>
+                <label>Email</label>
+            </div>
+            <div class="txt_field1">
+                <input type="text" name="Address" required>
+                <span></span>
+                <label>Address</label>
+            </div>
+            <input type="submit" value="Update Details">
+        </form>
+    </div>
+</section>
+</body>
+</html>
