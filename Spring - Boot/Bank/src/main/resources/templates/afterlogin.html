@@ -10,21 +10,21 @@
 </head>
 <body>
 <header>
-    <h2><a href="Home">DYNAMIC BANK</a></h2>
+    <h2><a href="/">DYNAMIC BANK</a></h2>
     <nav>
 
-        <li><a href="Home">Home</a></li>
-        <li><a href="#">Update Details</a></li>
-        <li><a href="fundTransfer">Fund Transfer</a></li>
-        <li><a href="Home">Logout</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a th:href="@{/fundTransfer/{id} (id=${accountNumber})}">Fund Transfer</a></li>
+        <li><a href="/">Logout</a></li>
     </nav>
 </header>
 <section class="banner-area">
     <div class="banner-img"></div>
     <div class="centerr">
         <h1>Customer Details</h1>
+        <span th:text="${message}"/>
         <form method="post" action="/afterlogin">
-            <table cellpadding="3" align="left">
+            <table cellpadding="2" align="left">
             <tr>
                 <td><h4>Name</h4> <td><h4> : </h4></td> <td><h4><span th:text=" ${customerName}"/></h4></td>
             </tr>
@@ -32,7 +32,7 @@
                 <td><h4>Username</h4></td> <td><h4> : </h4></td> <td><h4><span th:text=" ${userName}"/></h4></td>
             </tr>
             <tr>
-                <td><h4>Phone Number</h4></td> <td><h4> : </h4></td> <td> <h4><span th:text=" ${Contact}"/></h4></td>
+                <td><h4>Contact</h4></td> <td><h4> : </h4></td> <td> <h4><span th:text=" ${Contact}"/></h4></td>
             </tr>
             <tr>
                 <td><h4>Email</h4></td> <td><h4> : </h4></td> <td><h4><span th:text=" ${Email}"/></h4></td>
@@ -40,10 +40,17 @@
             <tr>
                 <td><h4>Address</h4></td> <td><h4> : </h4></td> <td><h4><span th:text=" ${Address}"/></h4></td>
             </tr>
+            <tr>
+                <td><h4>Account Number</h4></td> <td><h4> : </h4></td> <td><h4><span th:text=" ${accountNumber}"/></h4></td>
+            </tr>
+            <tr>
+                <td><h4>Balance</h4></td> <td><h4> : </h4></td> <td><h4><span th:text=" ${balance}"/></h4></td>
+            </tr>
             </table>
             <br><br>
-            <div class="signup_link">
-                Want to Update? <a th:href="@{/updateCustomer/{id} (id=${userName})}">Update</a>
+            <div class="update_link">
+                <br>
+                Want to Update? <a th:href="@{/updateDetails/{id} (id=${userName})}">Update</a>
             </div>
         </form>
     </div>

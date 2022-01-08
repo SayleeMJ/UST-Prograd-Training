@@ -1,8 +1,8 @@
 package engineer.saylee.Bank.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity
 public class Customer {
@@ -10,10 +10,10 @@ public class Customer {
     @Column(nullable = false)
     private String customerName;
 
-    @Column(nullable = false, unique = true, updatable = false)
+    @Column(nullable = false, unique = true)
     private String contact;
 
-    @Column(nullable = false, unique = true, updatable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -23,6 +23,10 @@ public class Customer {
     private String userName;
     @Column(nullable = false)
     private String password;
+
+    @JsonIgnore
+    @OneToOne
+    private Account account;
 
     public Customer() {
     }
@@ -82,5 +86,13 @@ public class Customer {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

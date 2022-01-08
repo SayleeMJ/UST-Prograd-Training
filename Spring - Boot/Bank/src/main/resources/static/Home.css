@@ -7,6 +7,7 @@
 }
 body{
     font-family: "Poppins", sans-serif;
+    overflow: auto;
 }
 ul,nav{
     list-style: none;
@@ -477,6 +478,27 @@ form .txt_field1{
 .txt_field1 input:valid ~ span::before{
   width: 100%;
 }
+
+tr{
+    text-align
+}
+
 td {
   text-align: left;
+}
+
+/*update link*/
+.update_link{
+  margin: 60px 10px;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  color: #666666;
+}
+.update_link a{
+  color: #2691d9;
+  text-decoration: none;
+}
+.update_link a:hover{
+  text-decoration: underline;
 }

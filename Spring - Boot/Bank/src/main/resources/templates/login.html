@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en"><html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -8,10 +7,10 @@
 </head>
 <body>
 <header>
-    <h2><a href="Home">DYNAMIC BANK</a></h2>
+    <h2><a href="/">DYNAMIC BANK</a></h2>
     <nav>
 
-        <li><a href="Home">Home</a></li>
+        <li><a href="/">Home</a></li>
 <!--        <li><a href="services">Services</a></li>-->
 <!--        <li><a href="#about">About</a></li>-->
 <!--        <li><a href="#contact">Contact</a></li>-->
@@ -21,6 +20,7 @@
     <div class="banner-img"></div>
     <div class="centerr">
             <h1>Login</h1>
+        <span th:text=" ${errorMessage}"/>
             <form method="post" action="/login">
                 <div class="txt_field">
                     <input type="text" name="userName" required>
