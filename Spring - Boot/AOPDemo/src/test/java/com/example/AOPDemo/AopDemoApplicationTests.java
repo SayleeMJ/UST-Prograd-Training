@@ -1,10 +1,10 @@
-package engineer.saylee.Bank;
+package com.example.AOPDemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BankApplicationTests {
+class AopDemoApplicationTests {
 
 	@Test
 	void contextLoads() {
