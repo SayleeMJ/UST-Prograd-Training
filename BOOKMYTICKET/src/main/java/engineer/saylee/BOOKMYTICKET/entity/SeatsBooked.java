@@ -12,8 +12,9 @@ public class SeatsBooked {
     @Id
     @GeneratedValue
     private Long id;
-    private String seats;
-    private Double seatPrice;
+    private String seatNumbers;
+    private String seatsCount;
+    private String ticketPrice;
 
     @JsonIgnore
     @ManyToOne
@@ -27,9 +28,12 @@ public class SeatsBooked {
 
     }
 
-    public SeatsBooked(String seats, Double seatPrice){
-        this.seats = seats;
-        this.seatPrice = seatPrice;
+    public SeatsBooked(String seatNumbers, String seatsCount, String ticketPrice, User user, MovieShow movieShow){
+        this.seatNumbers = seatNumbers;
+        this.seatsCount = seatsCount;
+        this.ticketPrice = ticketPrice;
+        this.user = user;
+        this.movieShow = movieShow;
     }
 
     public Long getId() {
@@ -40,20 +44,28 @@ public class SeatsBooked {
         this.id = id;
     }
 
-    public String getSeats() {
-        return seats;
+    public String getSeatsCount() {
+        return seatsCount;
     }
 
-    public void setSeats(String seats) {
-        this.seats = seats;
+    public void setSeatsCount(String seatsCount) {
+        this.seatsCount = seatsCount;
     }
 
-    public Double getSeatPrice() {
-        return seatPrice;
+    public String getSeatNumbers() {
+        return seatNumbers;
     }
 
-    public void setSeatPrice(Double seatPrice) {
-        this.seatPrice = seatPrice;
+    public void setSeatNumbers(String seatNumbers) {
+        this.seatNumbers = seatNumbers;
+    }
+
+    public String getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(String ticketPrice) {
+        this.ticketPrice = ticketPrice;
     }
 
     public User getUser() {

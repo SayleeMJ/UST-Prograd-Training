@@ -2,6 +2,7 @@ package engineer.saylee.BOOKMYTICKET.service;
 
 
 import engineer.saylee.BOOKMYTICKET.entity.MovieShow;
+import engineer.saylee.BOOKMYTICKET.entity.User;
 import engineer.saylee.BOOKMYTICKET.repository.MovieShowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,4 +30,7 @@ public class MovieShowService {
         return movieShowRepository.existsById(id);
     }
 
+    public MovieShow save(MovieShow movieShow){
+        return movieShowRepository.save(movieShow);
+    }
 }

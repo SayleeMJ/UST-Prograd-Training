@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>BookMyTicket</title>
@@ -26,11 +26,17 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/movies">Movies<span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
+                            <li th:unless="${username}" class="nav-item">
+                                <a class="nav-link" href="/login">Login</a>
+                            </li>
+                        <li th:unless="${username}" class="nav-item">
                             <a class="nav-link" href="/register">Register</a>
+                        </li>
+                        <li th:if="${username}" class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     </ul>
                 </div>

@@ -8,20 +8,31 @@
     <title>Movie Seat Booking</title>
     <style>
         body {
-  background-color: #242333;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  font-family: "Lato", sans-serif;
-  margin: 0;
-}
+              background: var(--bggradient);
+              color: #fff;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              height: 100vh;
+              font-family: "Lato", sans-serif;
+              margin: 0;
+            }
+            .hidden{
+                display:none;
+            }
     </style>
 </head>
 <body>
 
+<div class="movie-container">
+    <h3 th:text="${userName}"></h3>
+    <label> Selected a movie:</label>
+        <span th:text="${shows.movie.movieName}"></span>
+    <br>
+    <label> Ticket Price:</label>
+        <span th:text="${shows.ticketPrice}" id="movie"></span>
+</div>
 
 <ul class="showcase">
     <li>
@@ -109,6 +120,17 @@
 >0</span
 >
 </p>
+
+<form action="/confirmBooking" method="post">
+    <input type="text" name="username" class="hidden" th:value="${userName}">
+    <input id="seats" type="text" name="seats" class="hidden">
+    <input id="totalSeats" type="text" name="totalSeats" class="hidden">
+    <input id="ticketPrice" type="text" name="ticketPrice" class="hidden">
+
+    <input type="text" name="show" class="hidden" th:value="${shows.id}">
+
+    <button id="confirmButton">Confirm</button>
+</form>
 
 <script th:inline="javascript">
 /*<![CDATA[*/

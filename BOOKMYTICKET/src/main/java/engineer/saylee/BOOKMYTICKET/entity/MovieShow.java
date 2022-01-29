@@ -1,6 +1,7 @@
 package engineer.saylee.BOOKMYTICKET.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -17,6 +18,7 @@ public class MovieShow {
     private String theaterName;
     private Integer seatAvailability;
     private String bookedSeats;
+    private  Integer ticketPrice;
 
     @JsonIgnore
     @ManyToOne
@@ -30,12 +32,13 @@ public class MovieShow {
 
     public MovieShow(){}
 
-    public MovieShow(Date date, Time time, String theaterName, Integer seatAvailability, String bookedSeats) {
+    public MovieShow(Date date, Time time, String theaterName, Integer seatAvailability, String bookedSeats, Integer ticketPrice) {
         this.date = date;
         this.time = time;
         this.theaterName = theaterName;
         this.seatAvailability = seatAvailability;
         this.bookedSeats = bookedSeats;
+        this.ticketPrice = ticketPrice;
     }
 
     public Movie getMovie() {
@@ -109,5 +112,13 @@ public class MovieShow {
 
     public void setBookedSeats(String bookedSeats) {
         this.bookedSeats = bookedSeats;
+    }
+
+    public Integer getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(Integer ticketPrice) {
+        this.ticketPrice = ticketPrice;
     }
 }

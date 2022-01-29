@@ -1,18 +1,16 @@
 package engineer.saylee.BOOKMYTICKET.controller;
 
-import engineer.saylee.BOOKMYTICKET.entity.Movie;
 import engineer.saylee.BOOKMYTICKET.entity.User;
 import engineer.saylee.BOOKMYTICKET.service.MovieService;
 import engineer.saylee.BOOKMYTICKET.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -24,7 +22,10 @@ public class UserController {
 
     //Home Page
     @RequestMapping("/")
-    public String home(){
+    public String home(Model model, HttpSession session){
+        if(session.getAttribute("userName") != null){
+            model.addAttribute("username", session.getAttribute("userName"));
+        }
         return "home";
     }
 
@@ -33,11 +34,18 @@ public class UserController {
         return "login";
     }
 
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
+    }
+
     @RequestMapping("/register")
     public String registerForm(){
         return "register";
     }
-    @RequestMapping("profile")
+
+    @RequestMapping("/profile")
     public String user(){
         return "profile";
     }
@@ -47,7 +55,7 @@ public class UserController {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String name = request.getParameter("name");
-        String email = request.getParameter("email");;
+        String email = request.getParameter("email");
 
         User user = new User(username,password,name,email);
         userService.save(user);
@@ -55,12 +63,13 @@ public class UserController {
     }
 
 
-    @GetMapping("/movies")
-    public String movies(){
+    @RequestMapping("/movies")
+    public String movies(Model model, HttpSession session){
+        model.addAttribute("movies", movieService.movieList() );
         return "movies";
     }
 
-    @PostMapping("/movies")
+    @PostMapping("/validateLogin")
     public String login(Model model, HttpServletRequest request){
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -68,10 +77,11 @@ public class UserController {
         if (userService.existsById(username) == true) {
             user = userService.findByUsername(username);
             if (password.equals(user.getPassword())) {
-                model.addAttribute("userName", username);
+                model.addAttribute("username", username);
                 model.addAttribute("movies", movieService.movieList() );
-               // User user1 = userService.findByUsername(username);
-
+                HttpSession session = request.getSession();
+                session.setAttribute("userName", username);
+                return "movies";
             } else {
                 model.addAttribute("errorMessage", "Incorrect Password.");
                 return "login";
@@ -80,21 +90,18 @@ public class UserController {
             model.addAttribute("errorMessage", "Please enter valid Username");
             return "login";
         }
-        return "movies";
     }
 
-//    @RequestMapping("profile/{userId}")
-//    public String displayUserById(@PathVariable String userId, Model model) {
-//        model.addAttribute("name", userService.findByUsername(userId).getName());
-//        model.addAttribute("username", userService.findByUsername(userId).getUsername());
-//        model.addAttribute("email", userService.findByUsername(userId).getEmail());
-//        return "profile";
-//    }
-    @GetMapping("/profile/{username}")
-    public String profile(@PathVariable String username, Model model){
-     //   model.addAttribute("shows", userService.findByUsername(username));
-        User user= userService.findByUsername(username);
-        model.addAttribute("user", user);
-        return "profile";
+    @RequestMapping("/userProfile")
+    public String displayUserById(Model model, HttpSession session) {
+        if(session.getAttribute("userName") != null) {
+            String username = (String) session.getAttribute("userName");
+            model.addAttribute("username", username);
+            model.addAttribute("User", userService.findByUsername(username));
+            return "userProfile";
+        }else {
+            return "login";
+        }
     }
+
 }

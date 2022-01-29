@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BookMyTicket</title>
+    <meta name="viewport" content="width=device, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="images/BookMyTicket-logos.jpeg">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Style.css" />
+    <link rel="stylesheet" href="/mobile-style.css">
+</head>
+<body>
+<header>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand" href="/">BookMyTicket</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="mr-auto"></div>
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/movies">Movies<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/userProfile">Profile</a>
+                    </li>
+                    <li  class="nav-item">
+                        <a class="nav-link" href="/myShows">My Shows</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row overflow-container" >
+            <div class="mt-5 text-center border-bottom">
+                <h3 th:text="${username}"></h3>
+            </div>
+            <table class="table table-striped table-hover mt-4">
+                <thead>
+                <tr>
+                    <th scope="col">Movie Name</th>
+                    <th scope="col">Theater Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Seat Numbers</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="detail: ${details}">
+                    <td th:text="${detail.movieShow.movie.movieName}" ></td>
+                    <td th:text="${detail.movieShow.theaterName}" ></td>
+
+                    <td th:text="${#dates.format(detail.movieShow.date, 'dd-MMM-yyyy')}" ></td>
+                    <td th:text="${detail.movieShow.time}" ></td>
+                    <td th:text="${detail.seatNumbers}" ></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</header>
+</body>
+</html>
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>BookMyTicket</title>-->
+<!--    <meta name="viewport" content="width=device, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <link rel="shortcut icon" href="images/BookMyTicket-logos.jpeg">-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />-->
+<!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">-->
+<!--    <link rel="stylesheet" href="/Style.css" />-->
+<!--    <link rel="stylesheet" href="/mobile-style.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:each="detail: ${details}" class="card card-width">-->
+<!--    <span th:text="${detail.User.username}"></span>-->
+<!--    <span th:text="${detail.movieShow.movie.movieName}"></span>-->
+<!--    <span th:text="${detail.movieShow.time}"></span>-->
+<!--    <span th:text="${detail.movieShow.date}"></span>-->
+<!--    <span th:text="${detail.movieShow.theaterName}"></span>-->
+<!--    <span th:text="${detail.seatNumbers}"></span>-->
+<!--</div>-->
+<!--</body>-->
+<!--kay karu-->
+<!--</html>-->

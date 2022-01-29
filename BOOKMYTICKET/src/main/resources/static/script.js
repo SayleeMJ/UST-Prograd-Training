@@ -3,10 +3,14 @@ const seats = document.querySelectorAll(".row .seat:not(.sold)");
 const count = document.getElementById("count");
 const total = document.getElementById("total");
 const movieSelect = document.getElementById("movie");
-
+const inputSeatCount = document.getElementById("totalSeats");
+const inputSeats = document.getElementById("seats");
+const confirmButton = document.getElementById("confirmButton");
+const totalTicketPrice = document.getElementById("ticketPrice");
+confirmButton.disabled = true;
 populateUI();
 
-let ticketPrice = +movieSelect.value;
+let ticketPrice = +movieSelect.innerText;
 
 // Save selected movie index and price
 function setMovieData(movieIndex, moviePrice) {
@@ -18,7 +22,7 @@ function setMovieData(movieIndex, moviePrice) {
 function updateSelectedCount() {
   const selectedSeats = document.querySelectorAll(".row .seat.selected");
 
-  const seatsIndex = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
+  const seatsIndex = [...selectedSeats].map((seat) => (seat.id));
 
   localStorage.setItem("selectedSeats", JSON.stringify(seatsIndex));
 
@@ -27,7 +31,16 @@ function updateSelectedCount() {
   count.innerText = selectedSeatsCount;
   total.innerText = selectedSeatsCount * ticketPrice;
 
-  setMovieData(movieSelect.selectedIndex, movieSelect.value);
+  inputSeatCount.value = selectedSeatsCount;
+  inputSeats.value = seatsIndex;
+  totalTicketPrice.value = selectedSeatsCount * ticketPrice;
+  if(selectedSeatsCount > 0){
+    confirmButton.disabled = false;
+  }
+  else{
+        confirmButton.disabled = true;
+  }
+  setMovieData(movieSelect.selectedIndex, movieSelect.innerText);
 }
 
 
@@ -53,7 +66,7 @@ function populateUI() {
 // Movie select event
 movieSelect.addEventListener("change", (e) => {
   ticketPrice = +e.target.value;
-  setMovieData(e.target.selectedIndex, e.target.value);
+  setMovieData(e.target.id, e.target.value);
   updateSelectedCount();
 });
 
